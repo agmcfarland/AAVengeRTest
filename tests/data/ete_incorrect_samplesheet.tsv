@@ -1,0 +1,2 @@
+trial	subject	sample	replicate	adriftReadLinkerSeq	index1Seq	refGenome	vectorFastaFile	leaderSeqHMM	flags
+AD09	old_p1	GTSP4938	1	ACTCGGTAACTCACCGGATGNNNNNNNNNNNNCTCCGCTTAAGGGACT	TCCCAACCTAGG	hg38	thisfastadoesntexist.fasta	HIV1_1-100_U5.hmm	IN_u5
