@@ -1,2 +1,2 @@
-﻿run_id,random_seed_value,number_of_reads,config_preset,sample_sheet_path,n_CPUs,run_tag,reference_output_path
-220317_MN01490_0066_A000H3T5LT,3,100000,integrase,/data/AAVengeRTest/tests/data/ete_incorrect_samplesheet.tsv,30,original_jones_pretest,
+﻿run_id,random_seed_value,number_of_reads,config_preset,sample_sheet_path,n_CPUs,run_tag
+220317_MN01490_0066_A000H3T5LT,3,100000,integrase,/data/AAVengeRTest/tests/data/ete_incorrect_samplesheet.tsv,30,original_jones_pretest
