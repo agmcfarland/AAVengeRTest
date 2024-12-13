@@ -13,8 +13,5 @@ def test_initalize_aavenger_test(example_run_handler_read_write):
 
 	aavenger_run = AAVengeRDockerRunner(run_handler = example_run_handler_read_write)
 
-	print(aavenger_run.__dict__)
-
-	pass
-
+	assert True
 
