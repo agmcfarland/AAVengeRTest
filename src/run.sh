@@ -41,9 +41,22 @@ echo "Set up finished"
 echo 'Testing version:'
 head "${DST_PATH}/${AAVENGER_TO_TEST}/version/version"
 
+
+# Packaged test data (small) (15 mins)
 AAVengeRTest \
---output_dir /data/aavenger_stability_testing \
+--output_dir /data/aavenger_stability_testing/packaged_test_data \
 --test_data_sheet /data/AAVengeRTest/tests/data/ete_correct_input_sheet.csv \
+--expected_output_dir /data/aavenger_stability_testing/data/packaged_test_data/expected_results \
+--microb120_user agmcfarland \
+--docker_image_name aavenger_docker_v3 \
+--aavenger_dir $DST_PATH/$AAVENGER_TO_TEST \
+--docker_source_mount /data \
+--docker_target_mount /data
+
+# Fast test data (Small subsets of jones ad09, jones lod, persaud, and topo) (X mins)
+AAVengeRTest \
+--output_dir /data/aavenger_stability_testing/fast_test_1 \
+--test_data_sheet /data/aavenger_stability_testing/data/fast_test_1/testing_input_1.csv \
 --microb120_user agmcfarland \
 --docker_image_name aavenger_docker_v3 \
 --aavenger_dir $DST_PATH/$AAVENGER_TO_TEST \
@@ -51,4 +64,4 @@ AAVengeRTest \
 --docker_target_mount /data
 
 
-
+# sudo rm -R /data/aavenger_stability_testing/fast_test_1

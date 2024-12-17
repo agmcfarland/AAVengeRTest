@@ -16,12 +16,15 @@ def example_run_results(project_test_data_directory, setup_temp_dir, scope = 'se
 		)
 	return run_results
 
-
 def test_intitalize_result_checker(example_run_results):
 	"""
 	pytest -sv tests/unit/test_ResultChecker.py::test_intitalize_result_checker
 	"""
 	assert example_run_results.run_id == '220317_MN01490_0066_A000H3T5LT'
+
+	print(example_run_results.__dict__)
+
+	assert example_run_results.aavenger_version == '2.1.1'
 
 def test_make_test_results_dir(example_run_results):
 	"""
@@ -79,7 +82,7 @@ def test_characterize_site_features(example_run_results, project_test_data_direc
 
 	example_run_results.characterize_sites_features()
 
-	assert example_run_results.site_features == {'file_detected': [True], 'n_subject': [1], 'n_sample': [1], 'n_refGenome': [1], 'n_posid': [40], 'n_vector': [1], 'n_repeat_name': [13], 'n_repeat_class': [7], 'n_nearestGene': [40], 'sum_sonicLengths': [42], 'sum_reads': [52], 'sum_nRepsObs': [40], 'sum_inGene': [31], 'sum_inExon': [2]}
+	assert example_run_results.site_features == {'file_detected': [True], 'shape_rows': [40], 'shape_columns': [30], 'n_subject': [1], 'n_sample': [1], 'n_refGenome': [1], 'n_posid': [40], 'n_vector': [1], 'n_repeat_name': [13], 'n_repeat_class': [7], 'n_nearestGene': [40], 'sum_sonicLengths': [42], 'sum_reads': [52], 'sum_nRepsObs': [40], 'sum_inGene': [31], 'sum_inExon': [2]}
 
 
 def test_characterize_site_features_no_sites_table_found(example_run_results):
@@ -90,7 +93,7 @@ def test_characterize_site_features_no_sites_table_found(example_run_results):
 
 	example_run_results.characterize_sites_features()
 
-	assert example_run_results.site_features == {'file_detected': [False], 'n_subject': [0], 'n_sample': [0], 'n_refGenome': [0], 'n_posid': [0], 'n_vector': [0], 'n_repeat_name': [0], 'n_repeat_class': [0], 'n_nearestGene': [0], 'sum_sonicLengths': [0], 'sum_reads': [0], 'sum_nRepsObs': [0], 'sum_inGene': [0], 'sum_inExon': [0]}
+	assert example_run_results.site_features == {'file_detected': [False], 'shape_rows': [0], 'shape_columns': [0], 'n_subject': [0], 'n_sample': [0], 'n_refGenome': [0], 'n_posid': [0], 'n_vector': [0], 'n_repeat_name': [0], 'n_repeat_class': [0], 'n_nearestGene': [0], 'sum_sonicLengths': [0], 'sum_reads': [0], 'sum_nRepsObs': [0], 'sum_inGene': [0], 'sum_inExon': [0]}
 
 
 def test_make_sites_df(example_run_results, project_test_data_directory):
@@ -109,11 +112,11 @@ def test_make_sites_df(example_run_results, project_test_data_directory):
 
 	example_run_results.characterize_sites_features()
 
-	assert example_run_results.site_features == {'file_detected': [True], 'n_subject': [1], 'n_sample': [1], 'n_refGenome': [1], 'n_posid': [40], 'n_vector': [1], 'n_repeat_name': [13], 'n_repeat_class': [7], 'n_nearestGene': [40], 'sum_sonicLengths': [42], 'sum_reads': [52], 'sum_nRepsObs': [40], 'sum_inGene': [31], 'sum_inExon': [2]}
+	assert example_run_results.site_features == {'file_detected': [True], 'shape_rows': [40], 'shape_columns': [30], 'n_subject': [1], 'n_sample': [1], 'n_refGenome': [1], 'n_posid': [40], 'n_vector': [1], 'n_repeat_name': [13], 'n_repeat_class': [7], 'n_nearestGene': [40], 'sum_sonicLengths': [42], 'sum_reads': [52], 'sum_nRepsObs': [40], 'sum_inGene': [31], 'sum_inExon': [2]}
 
 	df_sites = example_run_results.make_sites_df()
 
-	assert df_sites.shape == (1, 20)
+	assert df_sites.shape == (1, 23)
 
 
 
