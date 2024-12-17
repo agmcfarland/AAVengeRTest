@@ -1,0 +1,67 @@
+name: AAVengeRTest-conda
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.12'
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+
+    - name: Install dependencies
+      shell: bash -l {0}
+      run: |
+        conda env create -f environment.yml
+        $CONDA/bin/activate AAVengeRTest
+        conda env list
+        conda info
+
+    - name: Install AAVengeRTest
+      shell: bash -l {0}
+      run: |
+        conda env list
+        source $CONDA/etc/profile.d/conda.sh
+        source activate /usr/share/miniconda/envs/AAVengeRTest
+        conda info
+        pip install -e .
+
+    - name: Run tests with coverage
+      shell: bash -l {0}
+      run: |
+        source $CONDA/etc/profile.d/conda.sh
+        source activate /usr/share/miniconda/envs/AAVengeRTest
+        conda info
+        pytest -s -vvvv -l --tb=long tests
+
+    - name: Generate coverage report
+      shell: bash -l {0}
+      run: |
+        source $CONDA/etc/profile.d/conda.sh
+        source activate /usr/share/miniconda/envs/AAVengeRTest
+        conda info
+        pytest --cov .
+        ls -lha
+        cp .coverage ../
+
+    # - name: Install pytest
+    #   run: |
+    #     pip install pytest pytest-cov
+
+    # - name: Upload coverage reports to Codecov   
+    #   uses: codecov/codecov-action@v4.0.1
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }}

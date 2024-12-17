@@ -59,7 +59,6 @@ dependencies:
   - xz=5.4.6
   - zlib=1.2.13
   - pip:
-    - aavengertest==1.0.0
     - biopython==1.84
     - certifi==2024.8.30
     - charset-normalizer==3.4.0

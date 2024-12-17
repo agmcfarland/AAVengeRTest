@@ -53,7 +53,7 @@ AAVengeRTest \
 --docker_source_mount /data \
 --docker_target_mount /data
 
-# Fast test data (Small subsets of jones ad09, jones lod, persaud, and topo) (X mins)
+# Fast test data (Small subsets of jones ad09, jones lod (15 mins), persaud (19 mins), and topo (24 mins@30))
 AAVengeRTest \
 --output_dir /data/aavenger_stability_testing/fast_test_1 \
 --test_data_sheet /data/aavenger_stability_testing/data/fast_test_1/testing_input_1.csv \
