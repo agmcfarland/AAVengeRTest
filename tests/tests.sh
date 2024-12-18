@@ -13,6 +13,8 @@ python -m pytest -sv tests/unit/test*
 
 python -m pytest -sv tests
 
+pytest tests --cov
+
 
 # coverage -m pytest -sv  tests/end_to_end/test_ete2.py::test_run1_and_run2_run3_run4
 
