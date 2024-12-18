@@ -86,6 +86,7 @@ def test_load_test_data_sheet(
         == "<class 'pandas.core.frame.DataFrame'>"
     )
 
+
 def test_validate_test_data_input_sheet(
     example_input_manager_read_write, project_test_data_directory
 ):
@@ -111,15 +112,17 @@ def test_validate_test_data_input_sheet(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
+    example_input_manager_read_write.df_test_data[
+        "sample_sheet_path"
+    ] = "/does/not/exist"
 
     with patch("os.path.exists") as mock_os_path_exists:
-
         mock_os_path_exists.return_value = True
 
         example_input_manager_read_write.validate_sample_sheet_paths()
 
     example_input_manager_read_write.validate_run_tags()
+
 
 def test_validate_test_data_input_sheet_error(
     example_input_manager_read_write, project_test_data_directory, setup_temp_dir
@@ -131,10 +134,11 @@ def test_validate_test_data_input_sheet_error(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
+    example_input_manager_read_write.df_test_data[
+        "sample_sheet_path"
+    ] = "/does/not/exist"
 
     with pytest.raises(ValueError) as e_info:
-
         example_input_manager_read_write.validate_sample_sheet_paths()
 
 
@@ -147,8 +151,9 @@ def test_validate_test_data_run_tag(
     example_input_manager_read_write.load_test_data_sheet(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
-  
+
     example_input_manager_read_write.validate_run_tags()
+
 
 def test_validate_test_data_run_tag_error(
     example_input_manager_read_write, project_test_data_directory, setup_temp_dir
@@ -160,10 +165,9 @@ def test_validate_test_data_run_tag_error(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.df_test_data['run_tag'] = 'same'
+    example_input_manager_read_write.df_test_data["run_tag"] = "same"
 
     with pytest.raises(ValueError) as e_info:
-
         example_input_manager_read_write.validate_run_tags()
 
 
@@ -177,10 +181,11 @@ def test_validate_test_data_record_run(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
+    example_input_manager_read_write.df_test_data[
+        "sample_sheet_path"
+    ] = "/does/not/exist"
 
     with patch("os.path.exists") as mock_os_path_exists:
-
         mock_os_path_exists.return_value = True
 
         example_input_manager_read_write.validate_sample_sheet_paths()
@@ -194,6 +199,3 @@ def test_validate_test_data_record_run(
         example_input_manager_read_write.record_run()
 
         assert example_input_manager_read_write.run_record.shape == (2, 11)
-
-
-
