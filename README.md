@@ -27,6 +27,19 @@ options:
   --docker_target_mount
 ```
 
+# Installation
+
+```sh
+# Set ssh permission so connection to microb120 is passwordless
+# <redacted>
+
+# allow docker to be used passwordless
+sudo gpasswd -a $USER docker
+newgrp docker
+
+# install AAVengeRTest
+```
+
 # Inputs
 
 ## test_data_sheet

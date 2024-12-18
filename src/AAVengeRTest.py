@@ -111,6 +111,7 @@ def main():
                 docker_client.run()
 
             except:
+            	print('Docker client failed')
                 logger.debug(f"Failed on {run_}")
                 break
 
