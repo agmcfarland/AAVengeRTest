@@ -5,7 +5,7 @@
 
 [![TestsConda](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml/badge.svg)](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml)
 
-<!-- [![codecov](https://codecov.io/gh/agmcfarland/Bartender/graph/badge.svg?token=447XKVI3NG)](https://codecov.io/gh/agmcfarland/Bartender) -->
+[![codecov](https://codecov.io/gh/agmcfarland/AAVengeRTest/graph/badge.svg?token=h0353eSj1d)](https://codecov.io/gh/agmcfarland/AAVengeRTest)
 
 
 Test AAVengeR against different versions using whole or subsets of sequencing data from the Bushman Lab.   

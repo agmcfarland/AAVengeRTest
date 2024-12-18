@@ -57,9 +57,9 @@ jobs:
         ls -lha
         cp .coverage ../
 
-    # - name: Install pytest
-    #   run: |
-    #     pip install pytest pytest-cov
+    - name: Install pytest
+      run: |
+        pip install pytest pytest-cov
 
     # - name: Upload coverage reports to Codecov   
     #   uses: codecov/codecov-action@v4.0.1
