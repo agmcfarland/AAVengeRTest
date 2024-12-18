@@ -42,8 +42,5 @@ AAVengeRTest = "AAVengeRTest:main"
 requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages]
-find = {}  # Scanning implicit namespaces is active by default
-
 [tool.setuptools.packages.find]
 exclude = ["docs*"]
