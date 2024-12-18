@@ -110,9 +110,11 @@ def main():
 			try:
 				docker_client.run()
 
-			except:
+			except Exception as e:
 				print('Docker client failed')
+				print(e)
 				logger.debug(f"Failed on {run_}")
+				logger.debug(f"{e}")
 				break
 
 			logger.info(f"Finished test")
