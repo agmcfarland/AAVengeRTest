@@ -1,19 +1,14 @@
 # AAVengeRTest
 
-<!-- Badges start -->
-<!-- [![Tests](https://github.com/agmcfarland/Bartender/actions/workflows/python-app.yml/badge.svg)](https://github.com/agmcfarland/Bartender/actions/workflows/python-app.yml)
-[![TestsConda](https://github.com/agmcfarland/Bartender/actions/workflows/conda-deployment.yml/badge.svg)](https://github.com/agmcfarland/Bartender/actions/workflows/conda-deployment.yml)
-[![codecov](https://codecov.io/gh/agmcfarland/Bartender/graph/badge.svg?token=447XKVI3NG)](https://codecov.io/gh/agmcfarland/Bartender) -->
-<!-- Badges end -->
 
 [![Lint](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/black.yml/badge.svg)](https://github.com/agmcfarland/Bartender/actions/AAVengeRTest/black.yml)
 
 [![TestsConda](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml/badge.svg)](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml)
 
+<!-- [![codecov](https://codecov.io/gh/agmcfarland/Bartender/graph/badge.svg?token=447XKVI3NG)](https://codecov.io/gh/agmcfarland/Bartender) -->
 
-Test AAVengeR with subsetted data from the Bushman Lab.   
 
-
+Test AAVengeR against different versions using whole or subsets of sequencing data from the Bushman Lab.   
 
 # Usage
 
