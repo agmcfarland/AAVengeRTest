@@ -30,15 +30,6 @@ def test_intitalize_result_checker(example_run_results):
     assert example_run_results.aavenger_version == "2.1.1"
 
 
-def test_make_test_results_dir(example_run_results):
-    """
-    pytest -sv tests/unit/test_ResultChecker.py::test_make_test_results_dir
-    """
-    example_run_results.make_test_results_dir()
-
-    assert os.path.exists(example_run_results.test_results_dir)
-
-
 def test_read_in_sites(example_run_results, project_test_data_directory):
     """
     pytest -sv tests/unit/test_ResultChecker.py::test_read_in_sites

@@ -8,6 +8,8 @@
 
 [![Lint](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/black.yml/badge.svg)](https://github.com/agmcfarland/Bartender/actions/AAVengeRTest/black.yml)
 
+[![TestsConda](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml/badge.svg)](https://github.com/agmcfarland/AAVengeRTest/actions/workflows/conda-deployment.yml)
+
 
 Test AAVengeR with subsetted data from the Bushman Lab.   
 

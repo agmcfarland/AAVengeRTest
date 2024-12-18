@@ -13,7 +13,7 @@ def test_set_working_dir_tree(setup_temp_dir):
         working_dir, "test_user", "test_docker", "path/to/AAVengeR", None, None
     )
 
-    # Call the private method to set the dir structure
+    # Call the private test_input_manager method to set the dir structure
     manager._set_working_dir_tree()
 
     assert manager.microb120_user == "test_user"
@@ -86,7 +86,6 @@ def test_load_test_data_sheet(
         == "<class 'pandas.core.frame.DataFrame'>"
     )
 
-
 def test_validate_test_data_input_sheet(
     example_input_manager_read_write, project_test_data_directory
 ):
@@ -100,28 +99,6 @@ def test_validate_test_data_input_sheet(
     example_input_manager_read_write.validate_sample_sheet_paths()
 
     example_input_manager_read_write.validate_run_tags()
-
-
-def test_validate_test_data_input_sheet_errors(
-    example_input_manager_read_write, project_test_data_directory
-):
-    """
-    pytest -sv tests/unit/test_input_manager.py::test_validate_test_data_input_sheet_errors
-    """
-    example_input_manager_read_write.load_test_data_sheet(
-        pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
-    )
-
-    with pytest.raises(ValueError) as e_info:
-        example_input_manager_read_write.df_test_data["run_tag"] = ["one", "one"]
-        example_input_manager_read_write.validate_run_tags()
-
-    with pytest.raises(ValueError) as e_info:
-        example_input_manager_read_write.df_test_data["sample_sheet_path"] = [
-            "/doesnotexist/here.tsv",
-            "/doesnotexist/here.tsv",
-        ]
-        example_input_manager_read_write.validate_sample_sheet_paths()
 
 
 def test_validate_test_data_input_sheet(
@@ -134,9 +111,60 @@ def test_validate_test_data_input_sheet(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.validate_sample_sheet_paths()
+    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
+
+    with patch("os.path.exists") as mock_os_path_exists:
+
+        mock_os_path_exists.return_value = True
+
+        example_input_manager_read_write.validate_sample_sheet_paths()
 
     example_input_manager_read_write.validate_run_tags()
+
+def test_validate_test_data_input_sheet_error(
+    example_input_manager_read_write, project_test_data_directory, setup_temp_dir
+):
+    """
+    pytest -sv tests/unit/test_input_manager.py::test_validate_test_data_input_sheet_error
+    """
+    example_input_manager_read_write.load_test_data_sheet(
+        pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
+    )
+
+    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
+
+    with pytest.raises(ValueError) as e_info:
+
+        example_input_manager_read_write.validate_sample_sheet_paths()
+
+
+def test_validate_test_data_run_tag(
+    example_input_manager_read_write, project_test_data_directory, setup_temp_dir
+):
+    """
+    pytest -sv tests/unit/test_input_manager.py::test_validate_test_data_run_tag
+    """
+    example_input_manager_read_write.load_test_data_sheet(
+        pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
+    )
+  
+    example_input_manager_read_write.validate_run_tags()
+
+def test_validate_test_data_run_tag_error(
+    example_input_manager_read_write, project_test_data_directory, setup_temp_dir
+):
+    """
+    pytest -sv tests/unit/test_input_manager.py::test_validate_test_data_run_tag_error
+    """
+    example_input_manager_read_write.load_test_data_sheet(
+        pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
+    )
+
+    example_input_manager_read_write.df_test_data['run_tag'] = 'same'
+
+    with pytest.raises(ValueError) as e_info:
+
+        example_input_manager_read_write.validate_run_tags()
 
 
 def test_validate_test_data_record_run(
@@ -149,14 +177,23 @@ def test_validate_test_data_record_run(
         pjoin(project_test_data_directory, "ete_correct_input_sheet.csv")
     )
 
-    example_input_manager_read_write.validate_sample_sheet_paths()
+    example_input_manager_read_write.df_test_data['sample_sheet_path'] = '/does/not/exist'
 
-    example_input_manager_read_write.validate_run_tags()
+    with patch("os.path.exists") as mock_os_path_exists:
 
-    example_input_manager_read_write.record_run_path = setup_temp_dir
+        mock_os_path_exists.return_value = True
 
-    example_input_manager_read_write.aavenger_version = "2.1.1"
+        example_input_manager_read_write.validate_sample_sheet_paths()
 
-    example_input_manager_read_write.record_run()
+        example_input_manager_read_write.validate_run_tags()
 
-    assert example_input_manager_read_write.run_record.shape == (2, 11)
+        example_input_manager_read_write.record_run_path = setup_temp_dir
+
+        example_input_manager_read_write.aavenger_version = "2.1.1"
+
+        example_input_manager_read_write.record_run()
+
+        assert example_input_manager_read_write.run_record.shape == (2, 11)
+
+
+
