@@ -63,7 +63,7 @@ def main():
             test_data_sheet_path=args.test_data_sheet
         )
 
-        # global_input_parameters.validate_sample_sheet_paths()
+        global_input_parameters.validate_sample_sheet_paths()
 
         global_input_parameters.validate_run_tags()
 
@@ -163,10 +163,15 @@ def main():
 
             result_comparison.write_comparisons()
 
-            print(f"Test results stored in {run_result.test_results_dir}")
+            print(f"AAVengeR data stored in {global_input_parameters.processed_dir}\n")
+            print(f"Test results stored in {run_result.test_results_dir}\n")
+            print(f"Sites differences: {pd.read_csv(pjoin(run_result.test_results_dir, 'sites_difference_comparisons.csv'))}\n")
 
         logger.info(f"Finished AAVengeRTest")
 
 
 if __name__ == "__main__":
     main()
+
+
+
