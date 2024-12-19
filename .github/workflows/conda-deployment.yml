@@ -62,14 +62,18 @@ jobs:
         pip install pytest pytest-cov
 
     - name: Run tests
-      run: pytest --cov --cov-report=xml
-    # - name: Upload coverage reports to Codecov   
-    #   uses: codecov/codecov-action@v4.0.1
-    #   with:
-    #     token: ${{ secrets.CODECOV_TOKEN }}
+      run: |
+        source $CONDA/etc/profile.d/conda.sh
+        source activate /usr/share/miniconda/envs/AAVengeRTest
+        pytest --cov --cov-report=xml
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: agmcfarland/AAVengeRTest
+
+    # - name: Upload coverage reports to Codecov   
+    #   uses: codecov/codecov-action@v4.0.1
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }}
