@@ -165,13 +165,12 @@ def main():
 
             print(f"AAVengeR data stored in {global_input_parameters.processed_dir}\n")
             print(f"Test results stored in {run_result.test_results_dir}\n")
-            print(f"Sites differences: {pd.read_csv(pjoin(run_result.test_results_dir, 'sites_difference_comparisons.csv'))}\n")
+            print(
+                f"Sites differences: {pd.read_csv(pjoin(run_result.test_results_dir, 'sites_difference_comparisons.csv'))}\n"
+            )
 
         logger.info(f"Finished AAVengeRTest")
 
 
 if __name__ == "__main__":
     main()
-
-
-
