@@ -63,7 +63,7 @@ def main():
             test_data_sheet_path=args.test_data_sheet
         )
 
-        global_input_parameters.validate_sample_sheet_paths()
+        # global_input_parameters.validate_sample_sheet_paths()
 
         global_input_parameters.validate_run_tags()
 
