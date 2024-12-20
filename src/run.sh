@@ -57,6 +57,7 @@ AAVengeRTest \
 AAVengeRTest \
 --output_dir /data/aavenger_stability_testing/fast_test_1 \
 --test_data_sheet /data/aavenger_stability_testing/data/fast_test_1/testing_input_1.csv \
+--expected_output_dir /data/aavenger_stability_testing/data/fast_test_1/expected_results \
 --microb120_user agmcfarland \
 --docker_image_name aavenger_docker_v3 \
 --aavenger_dir $DST_PATH/$AAVENGER_TO_TEST \
